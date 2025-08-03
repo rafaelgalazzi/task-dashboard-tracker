@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { BaseForm } from '../../components/Form/BaseForm';
+import { useLogin } from '../../hooks/useAuth';
 
 const schema = z.object({
   email: z.string().email('Invalid email address.'),
@@ -17,6 +18,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export default function LoginScreen() {
+  const { login, isPending, error } = useLogin();
+
   const {
     watch,
     register,
@@ -33,9 +36,20 @@ export default function LoginScreen() {
 
   async function handleLogin() {
     const isValid = await trigger();
-    if (!isValid) {
+    if (!isValid || isPending) {
       return;
     }
+    login(
+      {
+        email: watch('email'),
+        password: watch('password'),
+      },
+      {
+        onSuccess: () => {
+          navigate('/');
+        },
+      }
+    );
   }
 
   return (
@@ -69,6 +83,11 @@ export default function LoginScreen() {
               Login
             </BaseButton>
           </div>
+          {error && (
+            <BaseText className="text-error text-center">
+              {error.message}
+            </BaseText>
+          )}
           <BaseText className="text-center">
             Don't have an account? Sign up{' '}
             <span

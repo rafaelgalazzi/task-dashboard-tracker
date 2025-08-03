@@ -8,6 +8,7 @@ import BaseCard from '../../components/Layout/BaseCard';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCreateAccount } from '../../hooks/useAuth';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required.'),
@@ -18,11 +19,14 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export default function CreateAccount() {
+  const { createAccount, isPending, error } = useCreateAccount();
+
   const navigate = useNavigate();
 
   const {
     register,
     trigger,
+    getValues,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -34,9 +38,22 @@ export default function CreateAccount() {
 
   async function handleCreateAccount() {
     const isValid = await trigger();
-    if (!isValid) {
+    if (!isValid || isPending) {
       return;
     }
+    const { name, email, password } = getValues();
+    createAccount(
+      {
+        name,
+        email,
+        password,
+      },
+      {
+        onSuccess: () => {
+          navigate('/login');
+        },
+      }
+    );
   }
 
   return (
@@ -73,6 +90,11 @@ export default function CreateAccount() {
               Create Account
             </BaseButton>
           </div>
+          {error && (
+            <BaseText className="text-error text-center">
+              {error.message}
+            </BaseText>
+          )}
         </BaseForm>
         <BaseText>
           Already have an account? Log in{' '}
