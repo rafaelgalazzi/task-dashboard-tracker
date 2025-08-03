@@ -16,3 +16,11 @@ export interface AccountCreateForm {
 export interface AccountCreateResponse {
   message: string;
 }
+
+export interface GetSessionResponse {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+}
