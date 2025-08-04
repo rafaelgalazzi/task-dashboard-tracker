@@ -5,7 +5,9 @@ body {
   @apply bg-gradient-dark relative overflow-hidden flex items-center justify-center min-h-screen w-screen font-inter;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -14,24 +16,24 @@ html, body, #root {
 
 :root {
   /* Paleta principal */
-  --color-primary: #6366F1;
-  --color-secondary: #8B5CF6;
-  --color-accent: #EC4899;
+  --color-primary: #6366f1;
+  --color-secondary: #8b5cf6;
+  --color-accent: #ec4899;
 
   /* Cores neutras */
-  --color-dark: #0F172A;
-  --color-dark-alt: #1E293B;
-  --color-light: #F1F5F9;
+  --color-dark: #0f172a;
+  --color-dark-alt: #1e293b;
+  --color-light: #f1f5f9;
 
   /* Texto */
-  --text-primary: #E2E8F0;
-  --text-secondary: #A5B4FC;
-  --text-accent: #F472B6;
+  --text-primary: #e2e8f0;
+  --text-secondary: #a5b4fc;
+  --text-accent: #f472b6;
 
   /* Estados */
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
 
   --spinner-color: #99a1af;
   --card-background: #364153;

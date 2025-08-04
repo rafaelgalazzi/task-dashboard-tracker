@@ -27,7 +27,7 @@ export function useCreateAccount() {
 
 export function useSession() {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["session"],
+    queryKey: ['session'],
     queryFn: getSession,
     retry: false,
   });

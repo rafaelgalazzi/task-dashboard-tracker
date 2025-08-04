@@ -1,8 +1,7 @@
-import { Navigate } from "react-router-dom";
-import { useSession } from "../../hooks/useAuth";
-import ScreenLayout from "../Layout/ScreenLayout";
-import { LoadingSpinner } from "../Spinner/LoadingSpinner";
-
+import { Navigate } from 'react-router-dom';
+import { useSession } from '../../hooks/useAuth';
+import ScreenLayout from '../Layout/ScreenLayout';
+import { LoadingSpinner } from '../Spinner/LoadingSpinner';
 
 export function NotFoundRoute() {
   const { session, isLoading } = useSession();
@@ -15,5 +14,5 @@ export function NotFoundRoute() {
     );
   }
 
-  return <Navigate to={session ? "/home" : "/login"} replace />;
+  return <Navigate to={session ? '/home' : '/login'} replace />;
 }

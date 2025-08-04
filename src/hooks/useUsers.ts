@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getUsers } from "../services/userService";
+import { useQuery } from '@tanstack/react-query';
+import { getUsers } from '../services/userService';
 
 export function useUsers() {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["users"],
+    queryKey: ['users'],
     queryFn: getUsers,
   });
 
