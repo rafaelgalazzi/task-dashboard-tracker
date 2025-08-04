@@ -39,8 +39,8 @@ jobs:
         run: npm run type-check
 
       # 7. Testes
-      # - name: Run tests
-      #   run: npm test -- --watchAll=false
+      - name: Run tests
+        run: npm test -- --watchAll=false
 
       # 8. Build
       - name: Build
