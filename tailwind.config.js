@@ -20,6 +20,8 @@ module.exports = {
         success: '#22C55E', // Verde sucesso
         warning: '#F59E0B', // Amarelo alerta
         error: '#EF4444', // Vermelho erro
+        spinnerColor: '#99a1af',
+        cardBackground: '#364153', // Fundo do card
       },
       backgroundImage: {
         'gradient-dark':
