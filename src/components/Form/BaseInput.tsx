@@ -44,9 +44,13 @@ export function BaseInput<T extends FieldValues>({
         autoComplete={autocomplete}
         {...inputProps}
       />
-      {error && (
-        <BaseText className="text-error text-sm mt-1 px-1" justify='start'>{error}</BaseText>
-      )}
+      <div className="mt-1 min-h-[16px] transition-opacity duration-200">
+        {error && (
+          <BaseText className="text-error text-sm px-1" justify="start">
+            {error}
+          </BaseText>
+        )}
+      </div>
     </div>
   );
 }

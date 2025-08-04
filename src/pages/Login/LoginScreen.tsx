@@ -75,7 +75,6 @@ export default function LoginScreen() {
           />
           <div className="flex justify-center p-2">
             <BaseButton
-              disabled={!watch('email') || !watch('password')}
               onClick={() => {
                 handleLogin();
               }}

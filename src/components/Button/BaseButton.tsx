@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "../Spinner/LoadingSpinner";
+import { LoadingSpinner } from '../Spinner/LoadingSpinner';
 
 export interface BaseButtonProps {
   children: React.ReactNode;
@@ -26,11 +26,7 @@ export default function BaseButton({
       disabled={disabled || loading}
       className="bg-white p-2 text-dark border rounded-md min-w-[150px] cursor-pointer hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity duration-300 flex items-center justify-center gap-2"
     >
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        children
-      )}
+      {loading ? <LoadingSpinner /> : children}
     </button>
   );
 }
