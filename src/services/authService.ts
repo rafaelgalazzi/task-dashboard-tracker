@@ -1,3 +1,4 @@
+import type { AxiosResponse } from 'axios';
 import api from '../api/axios';
 import type {
   LoginForm,
@@ -19,7 +20,10 @@ export async function accountCreate(
   return data;
 }
 
-export async function getSession(): Promise<GetSessionResponse> {
-  const { data } = await api.get('/me');
-  return data;
+export async function getSession(): Promise<AxiosResponse<GetSessionResponse>> {
+  return await api.get('/me');
+}
+
+export async function logout(): Promise<void> {
+  await api.post('/logout');
 }

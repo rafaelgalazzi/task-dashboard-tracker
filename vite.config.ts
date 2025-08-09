@@ -11,4 +11,13 @@ export default defineConfig({
     environment: 'jsdom', // simula browser para testar React
     setupFiles: './src/setupTests.ts',
   },
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
 });
