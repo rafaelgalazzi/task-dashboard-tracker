@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import BaseCard from '../../components/Layout/BaseCard';
 import GridLayout from '../../components/Layout/GridLayout';
-import ScreenLayout from '../../components/Layout/ScreenLayout';
 import BaseText from '../../components/Text/BaseText';
 import { useLogout } from '../../hooks/useAuth';
 
@@ -24,24 +23,23 @@ export default function HomePage() {
   }
 
   return (
-    <ScreenLayout>
-      <BaseCard>
-        <BaseText className="text-2xl font-bold">Home Dashboard</BaseText>
-        <GridLayout className="mt-4">
-          {menus.map((menu) => (
-            <BaseCard key={menu.name} className="cursor-pointer">
-              <BaseText className="text-lg">{menu.name}</BaseText>
-            </BaseCard>
-          ))}
-          <BaseCard
-            key="Logout"
-            className="cursor-pointer"
-            onClick={handleLogout}
-          >
-            <BaseText className="text-lg">Logout</BaseText>
+    <BaseCard showRibbon>
+      <BaseText className="text-2xl font-bold">Home Dashboard</BaseText>
+      <GridLayout className="mt-4">
+        {menus.map((menu) => (
+          <BaseCard key={menu.name} className="cursor-pointer" hoverWithGlow onClick={() => navigate(menu.path)}>
+            <BaseText className="text-lg">{menu.name}</BaseText>
           </BaseCard>
-        </GridLayout>
-      </BaseCard>
-    </ScreenLayout>
+        ))}
+        <BaseCard
+          key="Logout"
+          className="cursor-pointer"
+          hoverWithGlow
+          onClick={handleLogout}
+        >
+          <BaseText className="text-lg">Logout</BaseText>
+        </BaseCard>
+      </GridLayout>
+    </BaseCard>
   );
 }

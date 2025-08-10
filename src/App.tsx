@@ -4,9 +4,9 @@ import './App.css';
 import CreateAccount from './pages/Account/CreateAccount';
 import LoginScreen from './pages/Login/LoginScreen';
 import HomePage from './pages/Home/HomePage';
+import { NotFoundRoute } from './components/Routing/NotFoundRoute';
 import { PublicRoute } from './components/Routing/PublicRoute';
 import { PrivateRoute } from './components/Routing/PrivateRoute';
-import { NotFoundRoute } from './components/Routing/NotFoundRoute';
 
 const queryClient = new QueryClient();
 
@@ -15,30 +15,15 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          <Route
-            path="/account/create"
-            element={
-              <PublicRoute>
-                <CreateAccount />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <LoginScreen />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <PrivateRoute>
-                <HomePage />
-              </PrivateRoute>
-            }
-          />
+          <Route element={<PublicRoute />}>
+            <Route path="/login" element={<LoginScreen />} />
+            <Route path="/account/create" element={<CreateAccount />} />
+          </Route>
+
+          <Route element={<PrivateRoute />}>
+            <Route path="/home" element={<HomePage />} />
+          </Route>
+
           <Route path="*" element={<NotFoundRoute />} />
         </Routes>
       </Router>

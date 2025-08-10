@@ -1,6 +1,5 @@
 import { BaseInput } from '../../components/Form/BaseInput';
 import BaseCard from '../../components/Layout/BaseCard';
-import ScreenLayout from '../../components/Layout/ScreenLayout';
 import BaseText from '../../components/Text/BaseText';
 import BaseButton from '../../components/Button/BaseButton';
 import { useNavigate } from 'react-router-dom';
@@ -53,52 +52,50 @@ export default function LoginScreen() {
   }
 
   return (
-    <ScreenLayout>
-      <BaseCard>
-        <BaseForm>
-          <BaseText className="text-center text-2xl font-bold">Login</BaseText>
-          <BaseInput
-            label="Email"
-            type="email"
-            name="email"
-            register={register}
-            placeholder="Enter your email"
-            error={errors.email?.message}
-          />
-          <BaseInput
-            label="Password"
-            type="password"
-            placeholder="Enter your password"
-            name="password"
-            register={register}
-            error={errors.password?.message}
-          />
-          <div className="flex justify-center p-2">
-            <BaseButton
-              onClick={() => {
-                handleLogin();
-              }}
-            >
-              Login
-            </BaseButton>
-          </div>
-          {error && (
-            <BaseText className="text-error text-center">
-              {error.message}
-            </BaseText>
-          )}
-          <BaseText className="text-center">
-            Don't have an account? Sign up{' '}
-            <span
-              className="cursor-pointer hover:underline"
-              onClick={() => handleGoToCreateAccount()}
-            >
-              here
-            </span>
-            .
+    <BaseCard>
+      <BaseForm>
+        <BaseText className="text-center text-2xl font-bold">Login</BaseText>
+        <BaseInput
+          label="Email"
+          type="email"
+          name="email"
+          register={register}
+          placeholder="Enter your email"
+          error={errors.email?.message}
+        />
+        <BaseInput
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
+          name="password"
+          register={register}
+          error={errors.password?.message}
+        />
+        <div className="flex justify-center p-2">
+          <BaseButton
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            Login
+          </BaseButton>
+        </div>
+        {error && (
+          <BaseText className="text-error text-center">
+            {error.message}
           </BaseText>
-        </BaseForm>
-      </BaseCard>
-    </ScreenLayout>
+        )}
+        <BaseText className="text-center">
+          Don't have an account? Sign up{' '}
+          <span
+            className="cursor-pointer hover:underline"
+            onClick={() => handleGoToCreateAccount()}
+          >
+            here
+          </span>
+          .
+        </BaseText>
+      </BaseForm>
+    </BaseCard>
   );
 }

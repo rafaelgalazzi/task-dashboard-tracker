@@ -3,7 +3,6 @@ import BaseButton from '../../components/Button/BaseButton';
 import { BaseForm } from '../../components/Form/BaseForm';
 import { BaseInput } from '../../components/Form/BaseInput';
 import BaseText from '../../components/Text/BaseText';
-import ScreenLayout from '../../components/Layout/ScreenLayout';
 import BaseCard from '../../components/Layout/BaseCard';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -57,56 +56,54 @@ export default function CreateAccount() {
   }
 
   return (
-    <ScreenLayout>
-      <BaseCard>
-        <BaseText className="text-2xl font-bold">Create Account</BaseText>
-        <BaseForm>
-          <BaseInput
-            label="Name"
-            placeholder="Enter your name"
-            name="name"
-            type="text"
-            register={register}
-            error={errors.name?.message}
-          />
-          <BaseInput
-            label="Email"
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            register={register}
-            error={errors.email?.message}
-          />
-          <BaseInput
-            label="Password"
-            type="password"
-            name="password"
-            register={register}
-            placeholder="Enter your password"
-            error={errors.password?.message}
-          />
-          <div className="flex justify-center items-center p-2">
-            <BaseButton onClick={() => handleCreateAccount()}>
-              Create Account
-            </BaseButton>
-          </div>
-          {error && (
-            <BaseText className="text-error text-center">
-              {error.message}
-            </BaseText>
-          )}
-        </BaseForm>
-        <BaseText>
-          Already have an account? Log in{' '}
-          <span
-            className="cursor-pointer hover:underline"
-            onClick={() => handleGoToLogin()}
-          >
-            here
-          </span>
-          .
-        </BaseText>
-      </BaseCard>
-    </ScreenLayout>
+    <BaseCard>
+      <BaseText className="text-2xl font-bold">Create Account</BaseText>
+      <BaseForm>
+        <BaseInput
+          label="Name"
+          placeholder="Enter your name"
+          name="name"
+          type="text"
+          register={register}
+          error={errors.name?.message}
+        />
+        <BaseInput
+          label="Email"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          register={register}
+          error={errors.email?.message}
+        />
+        <BaseInput
+          label="Password"
+          type="password"
+          name="password"
+          register={register}
+          placeholder="Enter your password"
+          error={errors.password?.message}
+        />
+        <div className="flex justify-center items-center p-2">
+          <BaseButton onClick={() => handleCreateAccount()}>
+            Create Account
+          </BaseButton>
+        </div>
+        {error && (
+          <BaseText className="text-error text-center">
+            {error.message}
+          </BaseText>
+        )}
+      </BaseForm>
+      <BaseText>
+        Already have an account? Log in{' '}
+        <span
+          className="cursor-pointer hover:underline"
+          onClick={() => handleGoToLogin()}
+        >
+          here
+        </span>
+        .
+      </BaseText>
+    </BaseCard>
   );
 }
