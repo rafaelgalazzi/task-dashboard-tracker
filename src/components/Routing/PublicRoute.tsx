@@ -17,7 +17,7 @@ export function PublicRoute() {
 
   if (session) return <Navigate to="/home" replace />;
 
-return (
+  return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 to-indigo-900">
       <PublicNavbar />
 

@@ -84,22 +84,13 @@ export default function CreateAccount() {
           error={errors.password?.message}
         />
         <div className="flex justify-center items-center p-2">
-          <BaseButton onClick={() => handleCreateAccount()}>
-            Create Account
-          </BaseButton>
+          <BaseButton onClick={() => handleCreateAccount()}>Create Account</BaseButton>
         </div>
-        {error && (
-          <BaseText className="text-error text-center">
-            {error.message}
-          </BaseText>
-        )}
+        {error && <BaseText className="text-error text-center">{error.message}</BaseText>}
       </BaseForm>
       <BaseText>
         Already have an account? Log in{' '}
-        <span
-          className="cursor-pointer hover:underline"
-          onClick={() => handleGoToLogin()}
-        >
+        <span className="cursor-pointer hover:underline" onClick={() => handleGoToLogin()}>
           here
         </span>
         .

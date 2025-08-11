@@ -13,9 +13,7 @@ export async function login(form: LoginForm): Promise<LoginResponse> {
   return data;
 }
 
-export async function accountCreate(
-  form: AccountCreateForm
-): Promise<AccountCreateResponse> {
+export async function accountCreate(form: AccountCreateForm): Promise<AccountCreateResponse> {
   const { data } = await api.post('/account/create', form);
   return data;
 }

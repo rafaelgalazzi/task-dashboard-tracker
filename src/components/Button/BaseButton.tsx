@@ -7,12 +7,7 @@ export interface BaseButtonProps {
   loading?: boolean;
 }
 
-export default function BaseButton({
-  children,
-  onClick,
-  disabled,
-  loading = false,
-}: BaseButtonProps) {
+export default function BaseButton({ children, onClick, disabled, loading = false }: BaseButtonProps) {
   function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (!disabled) {

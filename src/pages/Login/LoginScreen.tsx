@@ -80,17 +80,10 @@ export default function LoginScreen() {
             Login
           </BaseButton>
         </div>
-        {error && (
-          <BaseText className="text-error text-center">
-            {error.message}
-          </BaseText>
-        )}
+        {error && <BaseText className="text-error text-center">{error.message}</BaseText>}
         <BaseText className="text-center">
           Don't have an account? Sign up{' '}
-          <span
-            className="cursor-pointer hover:underline"
-            onClick={() => handleGoToCreateAccount()}
-          >
+          <span className="cursor-pointer hover:underline" onClick={() => handleGoToCreateAccount()}>
             here
           </span>
           .

@@ -31,12 +31,7 @@ export default function HomePage() {
             <BaseText className="text-lg">{menu.name}</BaseText>
           </BaseCard>
         ))}
-        <BaseCard
-          key="Logout"
-          className="cursor-pointer"
-          hoverWithGlow
-          onClick={handleLogout}
-        >
+        <BaseCard key="Logout" className="cursor-pointer" hoverWithGlow onClick={handleLogout}>
           <BaseText className="text-lg">Logout</BaseText>
         </BaseCard>
       </GridLayout>

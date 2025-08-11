@@ -16,28 +16,28 @@ body,
 
 :root {
   /* Paleta principal */
-  --color-primary: #6366f1;   /* Indigo vibrante */
+  --color-primary: #6366f1; /* Indigo vibrante */
   --color-secondary: #a855f7; /* Roxo mais quente */
-  --color-accent: #ec4899;    /* Rosa neon */
+  --color-accent: #ec4899; /* Rosa neon */
 
   /* Cores neutras */
-  --color-dark: #0f172a;      /* Azul-escuro profundo */
-  --color-dark-alt: #1e293b;  /* Azul-acinzentado */
-  --color-light: #f8fafc;     /* Cinza quase branco */
+  --color-dark: #0f172a; /* Azul-escuro profundo */
+  --color-dark-alt: #1e293b; /* Azul-acinzentado */
+  --color-light: #f8fafc; /* Cinza quase branco */
 
   /* Texto */
-  --text-primary: #f1f5f9;    /* Quase branco */
-  --text-secondary: #c7d2fe;  /* Indigo claro */
-  --text-accent: #f9a8d4;     /* Rosa suave */
+  --text-primary: #f1f5f9; /* Quase branco */
+  --text-secondary: #c7d2fe; /* Indigo claro */
+  --text-accent: #f9a8d4; /* Rosa suave */
 
   /* Estados */
-  --success: #22c55e;         /* Verde */
-  --warning: #f59e0b;         /* Amarelo */
-  --error: #ef4444;           /* Vermelho */
+  --success: #22c55e; /* Verde */
+  --warning: #f59e0b; /* Amarelo */
+  --error: #ef4444; /* Vermelho */
 
   /* UI */
   --spinner-color: #a1a1aa;
-  --card-bg-rgb: 30 41 59;        /* #1E293B */
+  --card-bg-rgb: 30 41 59; /* #1E293B */
   --card-stroke-rgb: 255 255 255; /* branco p/ borda sutil */
 
   /* Navbar e footer com gradiente */

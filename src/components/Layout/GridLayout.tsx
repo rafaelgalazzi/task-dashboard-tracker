@@ -5,12 +5,7 @@ export interface ScreenLayoutProps {
   align?: 'start' | 'center' | 'baseline';
 }
 
-export default function GridLayout({
-  className,
-  children,
-  justify = 'center',
-  align = 'center',
-}: ScreenLayoutProps) {
+export default function GridLayout({ className, children, justify = 'center', align = 'center' }: ScreenLayoutProps) {
   const justifyMap = {
     start: 'justify-start',
     center: 'justify-center',

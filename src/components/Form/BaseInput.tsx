@@ -29,8 +29,7 @@ export function BaseInput<T extends FieldValues>({
       ? { ...register(name) }
       : {
           value,
-          onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-            onChange?.(e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => onChange?.(e.target.value),
         };
 
   return (
