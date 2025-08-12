@@ -33,7 +33,7 @@ export function BaseInput<T extends FieldValues>({
         };
 
   return (
-    <div className="base-input-container py-2">
+    <div className="py-2">
       {label && <label className="base-input-label">{label}</label>}
       <input
         type={type || 'text'}

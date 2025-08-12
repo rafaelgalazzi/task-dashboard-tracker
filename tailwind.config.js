@@ -25,6 +25,8 @@ module.exports = {
         cardBackgroundLight: 'rgba(39, 53, 73, 0.6)', // tom mais claro com transparência
         navbar: '#420686', // Fundo da navbar
         footer: '#420686', // Fundo do footer
+        gradientColor1: '#0f172b',
+        gradientColor2: '#312c85',
       },
       backgroundImage: {
         'gradient-dark':

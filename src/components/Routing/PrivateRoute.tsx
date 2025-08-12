@@ -18,7 +18,7 @@ export function PrivateRoute() {
   if (error || !session) return <Navigate to="/login" replace />;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 to-indigo-900">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gradient-color1 to-gradient-color2">
       <PrivateNavbar />
 
       {/* Take remaining space; top-aligned, but centered horizontally */}

@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCreateAccount } from '../../hooks/useAuth';
+import { useSnackbar } from '../../hooks/useSnackbar';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required.'),
@@ -19,6 +20,7 @@ type FormData = z.infer<typeof schema>;
 
 export default function CreateAccount() {
   const { createAccount, isPending, error } = useCreateAccount();
+  const { showSnackbar } = useSnackbar();
 
   const navigate = useNavigate();
 
@@ -49,7 +51,12 @@ export default function CreateAccount() {
       },
       {
         onSuccess: () => {
+          showSnackbar({ message: 'A confirmation email has been sent to your email.', type: 'success' });
           navigate('/login');
+        },
+        onError: (error) => {
+          console.log(error);
+          showSnackbar({ message: error.message, type: 'error' });
         },
       }
     );

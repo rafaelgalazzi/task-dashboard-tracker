@@ -7,6 +7,7 @@ import HomePage from './pages/Home/HomePage';
 import { NotFoundRoute } from './components/Routing/NotFoundRoute';
 import { PublicRoute } from './components/Routing/PublicRoute';
 import { PrivateRoute } from './components/Routing/PrivateRoute';
+import ConfirmAccount from './pages/Account/ConfirmAccount';
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ function App() {
           <Route element={<PublicRoute />}>
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/account/create" element={<CreateAccount />} />
+            <Route path="/account/confirm" element={<ConfirmAccount />} />
           </Route>
 
           <Route element={<PrivateRoute />}>
