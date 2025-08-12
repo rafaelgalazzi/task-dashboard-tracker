@@ -4,7 +4,7 @@ import GridLayout from '../../components/Layout/GridLayout';
 import BaseText from '../../components/Text/BaseText';
 import { useLogout } from '../../hooks/useAuth';
 
-export default function HomePage() {
+export function HomePage() {
   const navigate = useNavigate();
   const { logout } = useLogout();
   const menus = [

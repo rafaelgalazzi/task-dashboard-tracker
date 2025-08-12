@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { BaseForm } from '../../components/Form/BaseForm';
 import { useLogin } from '../../hooks/useAuth';
+import { BaseLink } from '../../components/Text/BaseLink';
 
 const schema = z.object({
   email: z.string().email('Invalid email address.'),
@@ -16,7 +17,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export default function LoginScreen() {
+export function LoginScreen() {
   const { login, isPending, error } = useLogin();
 
   const {
@@ -82,11 +83,7 @@ export default function LoginScreen() {
         </div>
         {error && <BaseText className="text-error text-center">{error.message}</BaseText>}
         <BaseText className="text-center">
-          Don't have an account? Sign up{' '}
-          <span className="cursor-pointer hover:underline" onClick={() => handleGoToCreateAccount()}>
-            here
-          </span>
-          .
+          Don't have an account? Sign up <BaseLink onClick={() => handleGoToCreateAccount()}>here</BaseLink>.
         </BaseText>
       </BaseForm>
     </BaseCard>

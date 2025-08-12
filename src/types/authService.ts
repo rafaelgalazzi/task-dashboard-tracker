@@ -24,3 +24,11 @@ export interface GetSessionResponse {
     email: string;
   };
 }
+
+export interface ConfirmEmailForm {
+  token: string;
+}
+
+export interface ResendConfirmEmailForm {
+  email: string;
+}

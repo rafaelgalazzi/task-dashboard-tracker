@@ -6,6 +6,8 @@ import type {
   AccountCreateResponse,
   LoginResponse,
   GetSessionResponse,
+  ConfirmEmailForm,
+  ResendConfirmEmailForm,
 } from '../types/authService';
 
 export async function login(form: LoginForm): Promise<LoginResponse> {
@@ -24,4 +26,12 @@ export async function getSession(): Promise<AxiosResponse<GetSessionResponse>> {
 
 export async function logout(): Promise<void> {
   await api.post('/logout');
+}
+
+export async function confirmEmail(form: ConfirmEmailForm): Promise<void> {
+  return await api.post('/account/confirm-email', form);
+}
+
+export async function resendEmail(form: ResendConfirmEmailForm): Promise<void> {
+  return await api.post('/account/resend-email', form);
 }

@@ -1,81 +1,100 @@
-import { useNavigate } from 'react-router-dom';
-import BaseButton from '../../components/Button/BaseButton';
-import { BaseForm } from '../../components/Form/BaseForm';
-import BaseText from '../../components/Text/BaseText';
 import BaseCard from '../../components/Layout/BaseCard';
-import { Controller, useForm } from 'react-hook-form';
+import { BaseLink } from '../../components/Text/BaseLink';
+import BaseText from '../../components/Text/BaseText';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useConfirmEmail, useResendEmail } from '../../hooks/useAuth';
+import { useEffect } from 'react';
+import { BaseInput } from '../../components/Form/BaseInput';
+import { BaseForm } from '../../components/Form/BaseForm';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { BaseValidationCodeInput } from '../../components/Form/BaseValidationCodeInput';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import BaseButton from '../../components/Button/BaseButton';
+import { useSnackbar } from '../../hooks/useSnackbar';
 
 const schema = z.object({
-  code: z
-    .string()
-    .min(6, 'Code must be 6 digits')
-    .max(6, 'Code must be 6 digits')
-    .regex(/^\d{6}$/, 'Digits only'),
+  email: z.string().email('Invalid email address.'),
 });
+
 type FormData = z.infer<typeof schema>;
 
-export default function ConfirmAccount() {
-  const [error] = useState({ message: '' });
+export function ConfirmAccount() {
   const navigate = useNavigate();
+  const { confirmEmail, confirmEmailError } = useConfirmEmail();
+  const { resendEmail } = useResendEmail();
+  const { showSnackbar } = useSnackbar();
+  const [searchParams] = useSearchParams();
 
-  const { getValues, control, trigger } = useForm<FormData>({
+  const token = searchParams.get('token');
+
+  const {
+    register,
+    trigger,
+    getValues,
+    formState: { errors },
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { code: '' },
-    mode: 'onChange',
   });
+
+  async function handleResendEmail() {
+    const isValid = await trigger();
+    if (!isValid) {
+      return;
+    }
+    const { email } = getValues();
+    resendEmail(
+      { email },
+      {
+        onSuccess: () => {
+          showSnackbar({ message: 'A confirmation email has been sent to your email.', type: 'success' });
+        },
+        onError: (error) => {
+          console.log(error);
+          showSnackbar({ message: 'Something went wrong', type: 'error' });
+        },
+      }
+    );
+  }
+
+  useEffect(() => {
+    function handleConfirmEmail(token: string) {
+      confirmEmail({ token });
+    }
+    if (token) {
+      handleConfirmEmail(token);
+    }
+  }, [confirmEmail, token]);
 
   function handleGoToLogin() {
     navigate('/login');
   }
 
-  async function handleConfirmEmail() {
-    const isValid = await trigger();
-    if (!isValid) {
-      return;
-    }
-    console.log(getValues('code'));
+  if (confirmEmailError) {
+    return (
+      <BaseCard className="min-h-[400px] flex flex-col justify-center">
+        <BaseText className="text-2xl font-bold">Your Account has not been confirmed!</BaseText>
+        <BaseText className="py-4">Type your email to resend the confirmation email</BaseText>
+        <BaseForm>
+          <BaseInput
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            register={register}
+            error={errors.email?.message}
+          />
+        </BaseForm>
+        <div className="flex justify-center py-4">
+          <BaseButton onClick={handleResendEmail}>Resend Email</BaseButton>
+        </div>
+      </BaseCard>
+    );
   }
 
   return (
-    <BaseCard>
-      <BaseText className="text-2xl font-bold">Confirm Your Email</BaseText>
-      <BaseForm>
-        <Controller
-          name="code"
-          control={control}
-          rules={{
-            required: 'Enter the 6-digit code',
-            minLength: { value: 6, message: 'Code must be 6 digits' },
-            maxLength: { value: 6, message: 'Code must be 6 digits' },
-            pattern: { value: /^\d{6}$/, message: 'Digits only' },
-          }}
-          render={({ field, fieldState }) => (
-            <BaseValidationCodeInput
-              value={field.value}
-              onChange={field.onChange}
-              length={6}
-              label="Verification code"
-              error={fieldState.error?.message}
-              autoFocusFirstEmpty
-              onComplete={() => handleConfirmEmail()}
-            />
-          )}
-        />
-        <div className="flex justify-center items-center p-2">
-          <BaseButton onClick={() => handleConfirmEmail()}>Confirm Account</BaseButton>
-        </div>
-        {error && <BaseText className="text-error text-center">{error.message}</BaseText>}
-      </BaseForm>
-      <BaseText className="pt-4">
-        Not received the code?{' '}
-        <span className="cursor-pointer hover:underline" onClick={() => handleGoToLogin()}>
-          Click to resend
-        </span>
-        .
+    <BaseCard className="min-h-[400px] flex flex-col justify-center">
+      <BaseText className="text-2xl font-bold">Your Account has been confirmed!</BaseText>
+      <BaseText className="py-4">
+        <BaseLink onClick={handleGoToLogin}>Go to Login</BaseLink>
       </BaseText>
     </BaseCard>
   );

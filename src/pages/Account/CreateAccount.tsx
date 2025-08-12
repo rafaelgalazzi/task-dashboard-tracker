@@ -9,6 +9,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCreateAccount } from '../../hooks/useAuth';
 import { useSnackbar } from '../../hooks/useSnackbar';
+import { BaseLink } from '../../components/Text/BaseLink';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required.'),
@@ -18,7 +19,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export default function CreateAccount() {
+export function CreateAccount() {
   const { createAccount, isPending, error } = useCreateAccount();
   const { showSnackbar } = useSnackbar();
 
@@ -52,7 +53,9 @@ export default function CreateAccount() {
       {
         onSuccess: () => {
           showSnackbar({ message: 'A confirmation email has been sent to your email.', type: 'success' });
-          navigate('/login');
+          setTimeout(() => {
+            navigate('/login');
+          }, 3000);
         },
         onError: (error) => {
           console.log(error);
@@ -96,11 +99,7 @@ export default function CreateAccount() {
         {error && <BaseText className="text-error text-center">{error.message}</BaseText>}
       </BaseForm>
       <BaseText>
-        Already have an account? Log in{' '}
-        <span className="cursor-pointer hover:underline" onClick={() => handleGoToLogin()}>
-          here
-        </span>
-        .
+        Already have an account? Log in <BaseLink onClick={() => handleGoToLogin()}>here</BaseLink>.
       </BaseText>
     </BaseCard>
   );

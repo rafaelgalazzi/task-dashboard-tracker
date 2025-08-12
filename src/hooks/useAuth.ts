@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { login, accountCreate, getSession, logout } from '../services/authService';
+import { login, accountCreate, getSession, logout, confirmEmail, resendEmail } from '../services/authService';
 
 export function useLogin() {
   const { mutate, isPending, error } = useMutation({
@@ -64,5 +64,29 @@ export function useLogout() {
     logout: mutate,
     isPending,
     error,
+  };
+}
+
+export function useConfirmEmail() {
+  const { mutate, isPending, error } = useMutation({
+    mutationFn: confirmEmail,
+  });
+
+  return {
+    confirmEmail: mutate,
+    confirmEmailIsPending: isPending,
+    confirmEmailError: error,
+  };
+}
+
+export function useResendEmail() {
+  const { mutate, isPending, error } = useMutation({
+    mutationFn: resendEmail,
+  });
+
+  return {
+    resendEmail: mutate,
+    resendEmailIsPending: isPending,
+    resennEmailError: error,
   };
 }
