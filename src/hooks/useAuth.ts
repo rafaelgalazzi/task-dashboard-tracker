@@ -42,6 +42,7 @@ export function useSession() {
       return res.data;
     },
     retry: false,
+    refetchOnWindowFocus: false,
   });
 
   return {

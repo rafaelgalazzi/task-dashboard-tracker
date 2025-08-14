@@ -77,6 +77,8 @@ export function LoginScreen() {
             onClick={() => {
               handleLogin();
             }}
+            disabled={isPending}
+            loading={isPending}
           >
             Login
           </BaseButton>

@@ -8,7 +8,8 @@ export interface LoginResponse {
 }
 
 export interface AccountCreateForm {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 }

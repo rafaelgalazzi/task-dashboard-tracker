@@ -73,7 +73,7 @@ export function ConfirmAccount() {
     return (
       <BaseCard className="min-h-[400px] flex flex-col justify-center">
         <BaseText className="text-2xl font-bold">Your Account has not been confirmed!</BaseText>
-        <BaseText className="py-4">Type your email to resend the confirmation email</BaseText>
+        <BaseText className="py-4">Enter your email to resend the confirmation.</BaseText>
         <BaseForm>
           <BaseInput
             type="email"

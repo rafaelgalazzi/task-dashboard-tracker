@@ -12,7 +12,8 @@ import { useSnackbar } from '../../hooks/useSnackbar';
 import { BaseLink } from '../../components/Text/BaseLink';
 
 const schema = z.object({
-  name: z.string().min(1, 'Name is required.'),
+  firstName: z.string().min(1, 'First name is required.'),
+  lastName: z.string().min(1, 'Last name is required.'),
   email: z.string().email('Invalid email address.'),
   password: z.string().min(6, 'Password must be at least 6 characters.'),
 });
@@ -43,10 +44,11 @@ export function CreateAccount() {
     if (!isValid || isPending) {
       return;
     }
-    const { name, email, password } = getValues();
+    const { firstName, lastName, email, password } = getValues();
     createAccount(
       {
-        name,
+        firstName,
+        lastName,
         email,
         password,
       },
@@ -70,12 +72,20 @@ export function CreateAccount() {
       <BaseText className="text-2xl font-bold">Create Account</BaseText>
       <BaseForm>
         <BaseInput
-          label="Name"
-          placeholder="Enter your name"
-          name="name"
+          label="First Name"
+          placeholder="Enter your first name"
+          name="firstName"
           type="text"
           register={register}
-          error={errors.name?.message}
+          error={errors.firstName?.message}
+        />
+        <BaseInput
+          label="Last Name"
+          placeholder="Enter your last name"
+          name="lastName"
+          type="text"
+          register={register}
+          error={errors.lastName?.message}
         />
         <BaseInput
           label="Email"
@@ -94,7 +104,9 @@ export function CreateAccount() {
           error={errors.password?.message}
         />
         <div className="flex justify-center items-center p-2">
-          <BaseButton onClick={() => handleCreateAccount()}>Create Account</BaseButton>
+          <BaseButton onClick={() => handleCreateAccount()} loading={isPending} disabled={isPending}>
+            Create Account
+          </BaseButton>
         </div>
         {error && <BaseText className="text-error text-center">{error.message}</BaseText>}
       </BaseForm>
