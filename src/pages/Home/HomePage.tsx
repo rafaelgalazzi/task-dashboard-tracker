@@ -23,7 +23,7 @@ export function HomePage() {
   }
 
   return (
-    <BaseCard showRibbon>
+    <BaseCard>
       <BaseText className="text-2xl font-bold">Home Dashboard</BaseText>
       <GridLayout className="mt-4">
         {menus.map((menu) => (

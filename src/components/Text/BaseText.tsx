@@ -6,5 +6,5 @@ export interface BaseTextProps {
 }
 
 export default function BaseText({ children, className, justify = 'center' }: BaseTextProps) {
-  return <div className={`text-${justify} ${className}`}>{children}</div>;
+  return <div className={`text-${justify} font-sizer ${className}`}>{children}</div>;
 }
