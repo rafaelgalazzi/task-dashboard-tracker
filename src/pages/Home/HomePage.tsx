@@ -7,13 +7,6 @@ import { useLogout } from '../../hooks/useAuth';
 export function HomePage() {
   const navigate = useNavigate();
   const { logout } = useLogout();
-  const menus = [
-    { name: 'Tasks', path: '/tasks' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Profile', path: '/profile' },
-    { name: 'Settings', path: '/settings' },
-  ];
-
   function handleLogout() {
     logout(undefined, {
       onSuccess: () => {
@@ -23,18 +16,13 @@ export function HomePage() {
   }
 
   return (
-    <BaseCard>
+    <div>
       <BaseText className="text-2xl font-bold">Home Dashboard</BaseText>
       <GridLayout className="mt-4">
-        {menus.map((menu) => (
-          <BaseCard key={menu.name} className="cursor-pointer" hoverWithGlow onClick={() => navigate(menu.path)}>
-            <BaseText className="text-lg">{menu.name}</BaseText>
-          </BaseCard>
-        ))}
         <BaseCard key="Logout" className="cursor-pointer" hoverWithGlow onClick={handleLogout}>
           <BaseText className="text-lg">Logout</BaseText>
         </BaseCard>
       </GridLayout>
-    </BaseCard>
+    </div>
   );
 }

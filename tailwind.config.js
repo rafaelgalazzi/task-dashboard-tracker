@@ -4,44 +4,45 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#6366F1', // Indigo moderno
-        secondary: '#8B5CF6', // Roxo vibrante
-        accent: '#EC4899', // Rosa neon
-        dark: '#0F172A', // Azul escuro para fundo
-        darkAlt: '#1E293B', // Alternativa do escuro
-        light: '#F1F5F9', // Cinza claro para contraste
+        primary: '#4B5563', // Neutral gray
+        secondary: '#6B7280', // Cool gray
+        accent: '#9CA3AF', // Gray accent
+        dark: '#111827', // Dark gray for background
+        darkAlt: '#1F2937', // Alternative dark
+        light: '#F9FAFB', // Light gray for contrast
 
-        // Texto
-        textPrimary: '#E2E8F0', // Cinza bem claro
-        textSecondary: '#A5B4FC', // Indigo claro
-        textAccent: '#F472B6', // Rosa claro
+        // Text
+        textPrimary: '#F3F4F6', // Light gray
+        textSecondary: '#D1D5DB', // Cool gray
+        textAccent: '#9CA3AF', // Gray accent
 
-        // Estados
-        success: '#22C55E', // Verde sucesso
-        warning: '#F59E0B', // Amarelo alerta
-        error: '#EF4444', // Vermelho erro
-        spinnerColor: '#99a1af',
-        cardBackground: 'rgba(30, 41, 59, 0.7)', // darkAlt com 70% opacidade
-        cardBackgroundLight: 'rgba(39, 53, 73, 0.6)', // tom mais claro com transparência
-        navbar: '#420686', // Fundo da navbar
-        footer: '#420686', // Fundo do footer
-        gradientColor1: '#0f172b',
-        gradientColor2: '#312c85',
+        // States
+        success: '#10B981', // Emerald green
+        warning: '#F59E0B', // Amber
+        error: '#EF4444', // Red
+        spinnerColor: '#9CA3AF',
+        cardBackground: 'rgba(31, 41, 55, 0.8)', // darkAlt with 80% opacity
+        cardBackgroundLight: 'rgba(55, 65, 81, 0.6)', // lighter tone with transparency
+        navbar: '#1F2937', // Dark gray navbar
+        footer: '#1F2937', // Dark gray footer
+        gradientColor1: '#111827',
+        gradientColor2: '#1F2937',
+        link: '#8d8dff',
       },
       backgroundImage: {
         'gradient-dark':
-          'linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%)',
+          'linear-gradient(135deg, #111827 0%, #1F2937 50%, #374151 100%)',
         'gradient-accent':
-          'linear-gradient(135deg, #4338CA 0%, #6D28D9 50%, #BE185D 100%)',
+          'linear-gradient(135deg, #4B5563 0%, #6B7280 50%, #9CA3AF 100%)',
         'gradient-navbar':
-          'linear-gradient(90deg, #3730A3 0%, #5B21B6 50%, #9D174D 100%)',
+          'linear-gradient(90deg, #374151 0%, #4B5563 50%, #6B7280 100%)',
         'gradient-footer':
-          'linear-gradient(90deg, #5B21B6 0%, #3730A3 50%, #9D174D 100%)',
+          'linear-gradient(90deg, #4B5563 0%, #374151 50%, #1F2937 100%)',
         'gradient-navbar-dark':
-          'linear-gradient(90deg, #312E81 0%, #1E293B 50%, #0F172A 100%)',
+          'linear-gradient(90deg, #1F2937 0%, #111827 100%)',
       },
       boxShadow: {
-        glow: '0 0 15px rgba(236, 72, 153, 0.7), 0 0 30px rgba(139, 92, 246, 0.5)',
+        glow: '0 0 8px rgba(156, 163, 175, 0.3), 0 0 15px rgba(107, 114, 128, 0.2)',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],

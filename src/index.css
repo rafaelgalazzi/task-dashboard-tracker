@@ -15,37 +15,39 @@ body,
 }
 
 :root {
-  /* Paleta principal */
-  --color-primary: #6366f1; /* Indigo vibrante */
-  --color-secondary: #a855f7; /* Roxo mais quente */
-  --color-accent: #ec4899; /* Rosa neon */
+  /* Formal neutral color palette */
+  --color-primary: #4b5563; /* Neutral gray */
+  --color-secondary: #6b7280; /* Cool gray */
+  --color-accent: #9ca3af; /* Gray accent */
 
-  /* Cores neutras */
-  --color-dark: #0f172a; /* Azul-escuro profundo */
-  --color-dark-alt: #1e293b; /* Azul-acinzentado */
-  --color-light: #f8fafc; /* Cinza quase branco */
+  /* Neutral tones */
+  --color-dark: #111827; /* Dark gray */
+  --color-dark-alt: #1f2937; /* Alternative dark */
+  --color-light: #f9fafb; /* Light gray */
 
-  /* Texto */
-  --text-primary: #f1f5f9; /* Quase branco */
-  --text-secondary: #c7d2fe; /* Indigo claro */
-  --text-accent: #f9a8d4; /* Rosa suave */
+  /* Text */
+  --text-primary: #f3f4f6; /* Light gray */
+  --text-secondary: #d1d5db; /* Cool gray */
+  --text-accent: #9ca3af; /* Gray accent */
 
-  /* Estados */
-  --success: #22c55e; /* Verde */
-  --warning: #f59e0b; /* Amarelo */
-  --error: #ef4444; /* Vermelho */
+  /* States */
+  --success: #10b981; /* Emerald */
+  --warning: #f59e0b; /* Amber */
+  --error: #ef4444; /* Red */
 
   /* UI */
-  --spinner-color: #a1a1aa;
-  --card-bg-rgb: 30 41 59; /* #1E293B */
-  --card-stroke-rgb: 255 255 255; /* branco p/ borda sutil */
+  --spinner-color: #9ca3af;
+  --card-bg-rgb: 31 41 55; /* #1F2937 */
+  --card-stroke-rgb: 255 255 255; /* subtle white border */
 
-  /* Navbar e footer com gradiente */
-  --navbar: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-  --footer: linear-gradient(90deg, #8b5cf6 0%, #6366f1 50%, #ec4899 100%);
+  --link: #8d8dff;
 
-  --gradient-color1: #0f172b;
-  --gradient-color2: #312c85;
+  /* Navbar and footer with gradient */
+  --navbar: linear-gradient(90deg, #374151 0%, #4b5563 50%, #6b7280 100%);
+  --footer: linear-gradient(90deg, #4b5563 0%, #374151 50%, #1f2937 100%);
+
+  --gradient-color1: #111827;
+  --gradient-color2: #1f2937;
 
   @apply text-white;
 }
