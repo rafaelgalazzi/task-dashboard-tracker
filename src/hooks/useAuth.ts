@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { login, accountCreate, getSession, logout, confirmEmail, resendEmail } from '../services/authService';
 
 export function useLogin() {
-  const { mutate, isPending, error } = useMutation({
+  const { mutate, isPending, error, isSuccess } = useMutation({
     mutationFn: login,
   });
 
@@ -10,11 +10,12 @@ export function useLogin() {
     login: mutate,
     isPending,
     error,
+    isSuccess
   };
 }
 
 export function useCreateAccount() {
-  const { mutate, isPending, error } = useMutation({
+  const { mutate, isPending, error, isSuccess} = useMutation({
     mutationFn: accountCreate,
   });
 
@@ -22,6 +23,7 @@ export function useCreateAccount() {
     createAccount: mutate,
     isPending,
     error,
+    isSuccess
   };
 }
 

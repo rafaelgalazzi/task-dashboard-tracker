@@ -1,30 +1,27 @@
-import { useState } from 'react';
 import { IconButton } from '../Button/IconButton';
 import BaseText from '../Text/BaseText';
 
 interface PrivateNavbarProps {
   onLogout?: () => void;
   onToggleSidePanel?: (isOpen: boolean) => void;
+  isPanelOpen: boolean;
 }
 
 export function PrivateNavbar(props: PrivateNavbarProps) {
-  const [sidePanelOpen, setSidePanelOpen] = useState(true);
-
   function handleUserOptions() {
     console.log('user options');
   }
 
   function handleSidePanel() {
-    setSidePanelOpen(!sidePanelOpen);
     if (props.onToggleSidePanel) {
-      props.onToggleSidePanel(sidePanelOpen);
+      props.onToggleSidePanel(!props.isPanelOpen);
     }
   }
 
   return (
     <nav className="bg-gradient-navbar text-white shadow-md">
       <div className="px-4 py-3 flex justify-between items-center">
-        <div className='flex items-center'>
+        <div className="flex items-center">
           <IconButton name="menu" size={20} color="white" circle onClick={handleSidePanel}></IconButton>
           <BaseText className="font-semibold mx-4 text-lg" justify="start">
             Task Tracker

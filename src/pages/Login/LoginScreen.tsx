@@ -18,7 +18,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function LoginScreen() {
-  const { login, isPending, error } = useLogin();
+  const { login, isPending, error, isSuccess } = useLogin();
 
   const {
     watch,
@@ -78,7 +78,7 @@ export function LoginScreen() {
               handleLogin();
             }}
             disabled={isPending}
-            loading={isPending}
+            loading={isPending || isSuccess}
           >
             Login
           </BaseButton>

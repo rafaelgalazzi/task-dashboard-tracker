@@ -21,7 +21,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function CreateAccount() {
-  const { createAccount, isPending, error } = useCreateAccount();
+  const { createAccount, isPending, error, isSuccess } = useCreateAccount();
   const { showSnackbar } = useSnackbar();
 
   const navigate = useNavigate();
@@ -104,7 +104,7 @@ export function CreateAccount() {
           error={errors.password?.message}
         />
         <div className="flex justify-center items-center p-2">
-          <BaseButton onClick={() => handleCreateAccount()} loading={isPending} disabled={isPending}>
+          <BaseButton onClick={() => handleCreateAccount()} loading={isPending} disabled={isPending || isSuccess}>
             Create Account
           </BaseButton>
         </div>

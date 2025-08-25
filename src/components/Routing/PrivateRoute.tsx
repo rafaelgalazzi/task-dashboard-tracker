@@ -5,14 +5,17 @@ import { PrivateNavbar } from '../Navbar/PrivateNavbar';
 import { PrivateFooter } from '../Footer/PrivateFooter';
 import { SidePanel } from '../SidePanel/SidePanel';
 import { useState } from 'react';
+import { useScreen } from '../../hooks/useScreen';
 
 export function PrivateRoute() {
   const { session, isLoading, error } = useSession();
-  const [toggleSidePanel, setToggleSidePanel] = useState(true);
+  const { isMobile } = useScreen();
+
+  const [toggleSidePanel, setToggleSidePanel] = useState(!isMobile);
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gradient-color1 to-gradient-color2">
-      <PrivateNavbar onToggleSidePanel={setToggleSidePanel}/>
+      <PrivateNavbar isPanelOpen={toggleSidePanel} onToggleSidePanel={setToggleSidePanel} />
       <main className="flex-1 flex">
         <SidePanel isOpen={toggleSidePanel} />
         <div className="mx-auto w-full p-4">
