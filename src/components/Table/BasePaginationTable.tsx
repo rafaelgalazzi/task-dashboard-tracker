@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import BaseText from '../Text/BaseText';
 import { useScreen } from '../../hooks/useScreen';
 
