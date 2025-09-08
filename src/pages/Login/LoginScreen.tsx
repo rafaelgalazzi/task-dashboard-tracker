@@ -46,7 +46,7 @@ export function LoginScreen() {
       },
       {
         onSuccess: () => {
-          navigate('/');
+          navigate('/projects');
         },
       }
     );

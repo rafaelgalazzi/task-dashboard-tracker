@@ -45,7 +45,7 @@ export function PublicRoute() {
       <main className="relative flex-1 flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           {isLoading && <LoadingSpinner />}
-          {!isLoading && session && <Navigate to="/home" replace />}
+          {!isLoading && session && <Navigate to="/projects" replace />}
           {!isLoading && !session && <Outlet />}
         </div>
       </main>

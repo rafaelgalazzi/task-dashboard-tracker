@@ -14,5 +14,5 @@ export function NotFoundRoute() {
     );
   }
 
-  return <Navigate to={session ? '/home' : '/login'} replace />;
+  return <Navigate to={session ? '/projects' : '/login'} replace />;
 }

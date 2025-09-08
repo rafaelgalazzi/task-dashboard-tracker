@@ -7,7 +7,7 @@ interface User {
   description: string;
 }
 
-export function HomePage() {
+export function ProjectList() {
   function changePageHandler() {
     return;
   }
@@ -33,13 +33,13 @@ export function HomePage() {
     <div>
       <BaseText className="text-2xl font-bold">Projects</BaseText>
       <div className="flex">
-        <BaseCard className="md:w-1/2 w-full">
+        <BaseCard className="w-full">
           <BasePaginationTable
             columns={columns}
             items={items}
             page={1}
             pageSize={10}
-            total={0}
+            total={1}
             onPageChange={changePageHandler}
           />
         </BaseCard>

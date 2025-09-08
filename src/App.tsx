@@ -7,8 +7,8 @@ import { PrivateRoute } from './components/Routing/PrivateRoute';
 import { LoginScreen } from './pages/Login/LoginScreen';
 import { CreateAccount } from './pages/Account/CreateAccount';
 import { LoginTwoFactor } from './pages/Account/LoginTwoFactor';
-import { HomePage } from './pages/Home/HomePage';
 import { ConfirmAccount } from './pages/Account/ConfirmAccount';
+import { ProjectList } from './pages/Project/ProjectList';
 
 const queryClient = new QueryClient();
 
@@ -25,7 +25,7 @@ function App() {
           </Route>
 
           <Route element={<PrivateRoute />}>
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/projects" element={<ProjectList />} />
           </Route>
 
           <Route path="*" element={<NotFoundRoute />} />

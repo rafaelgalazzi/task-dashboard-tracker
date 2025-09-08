@@ -1,6 +1,7 @@
 import { type ReactElement } from 'react';
 import BaseText from '../Text/BaseText';
 import { useScreen } from '../../hooks/useScreen';
+import { BasePagination } from './BasePagination';
 
 interface BasePaginationTableProps<T> {
   columns: (keyof T)[];
@@ -20,6 +21,10 @@ export function BasePaginationTable<T>({
   onPageChange,
 }: BasePaginationTableProps<T>) {
   const { isMobile } = useScreen();
+
+  function handlePageChange(page: number) {
+    onPageChange(page);
+  }
 
   if (!items.length) return <BaseText>No items</BaseText>;
 
@@ -54,11 +59,11 @@ export function BasePaginationTable<T>({
             disabled={page === 1}
             onClick={() => onPageChange(page - 1)}
           >
-            Anterior
+            Prev
           </button>
 
           <span>
-            Página {page} de {totalPages}
+            Page {page} de {totalPages}
           </span>
 
           <button
@@ -66,13 +71,35 @@ export function BasePaginationTable<T>({
             disabled={page === totalPages}
             onClick={() => onPageChange(page + 1)}
           >
-            Próximo
+            NexT
           </button>
         </div>
       </div>
     );
   } else {
-    tableHtml = <></>
+    tableHtml = (
+      <div className="border rounded-md">
+        <div className="flex bg-accent font-semibold text-center">
+          {columns.map((column, idx) => (
+            <div key={idx} className="flex-1 p-2 border-r last:border-r-0">
+              {String(column)}
+            </div>
+          ))}
+        </div>
+
+        {items.map((item, rowIdx) => (
+          <div key={`row-${rowIdx}`} className="flex text-center border-b last:border-b-0">
+            {columns.map((column, colIdx) => (
+              <div key={colIdx} className="flex-1 p-2 border-r last:border-r-0">
+                {String(item[column])}
+              </div>
+            ))}
+          </div>
+        ))}
+
+        <BasePagination currentPage={page} totalPages={totalPages} onPageChange={handlePageChange} />
+      </div>
+    );
   }
 
   return tableHtml;
