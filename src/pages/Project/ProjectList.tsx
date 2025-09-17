@@ -1,39 +1,22 @@
 import BaseCard from '../../components/Layout/BaseCard';
 import { BasePaginationTable } from '../../components/Table/BasePaginationTable';
 import BaseText from '../../components/Text/BaseText';
-
-interface User {
-  name: string;
-  description: string;
-}
+import type { User } from '../../types/User';
 
 export function ProjectList() {
   function changePageHandler() {
     return;
   }
 
-  const items: User[] = [
-    {
-      name: 'batata',
-      description: 'teste',
-    },
-    {
-      name: 'batata',
-      description: 'teste',
-    },
-    {
-      name: 'batata',
-      description: 'teste',
-    },
-  ];
+  const items: User[] = [];
 
-  const columns: (keyof User)[] = ['name', 'description'];
+  const columns: (keyof User)[] = [];
 
   return (
     <div>
-      <BaseText className="text-2xl font-bold">Projects</BaseText>
       <div className="flex">
         <BaseCard className="w-full">
+          <BaseText className="text-2xl font-bold mb-4">Projects</BaseText>
           <BasePaginationTable
             columns={columns}
             items={items}

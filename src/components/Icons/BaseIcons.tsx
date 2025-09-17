@@ -9,6 +9,7 @@ interface BaseIconProps extends LucideProps {
   circle?: boolean;
   bgColor?: string;
   fill?: string;
+  disabled?: boolean;
 }
 
 export default function BaseIcon({
@@ -19,6 +20,7 @@ export default function BaseIcon({
   circle = false,
   bgColor = 'text-accent',
   fill,
+  disabled = false,
   ...props
 }: BaseIconProps) {
   if (!name) {
@@ -26,7 +28,22 @@ export default function BaseIcon({
     return null;
   }
 
-  const icon = <DynamicIcon name={name} size={size} fill={fill ?? 'none'} color={color ?? 'currentColor'} {...props} />;
+  const finalColor = disabled ? 'white' : (color ?? 'currentColor');
+
+  const icon = (
+    <DynamicIcon
+      name={name}
+      size={size}
+      fill={fill ?? 'none'}
+      color={finalColor}
+      {...props}
+      style={{
+        opacity: disabled ? 0.5 : 1,
+        pointerEvents: disabled ? 'none' : 'auto',
+        ...props.style,
+      }}
+    />
+  );
 
   if (!circle) {
     return icon;
@@ -34,11 +51,14 @@ export default function BaseIcon({
 
   return (
     <div
-      className={`inline-flex items-center justify-center rounded-full bg-button text-button-foreground hover:opacity-70 transition-colors duration-300 ${className}`}
+      className={`inline-flex items-center justify-center rounded-full transition-colors duration-300 ${className} ${
+        disabled ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-70'
+      }`}
       style={{
         backgroundColor: `var(--${bgColor})`,
         width: size + 16,
         height: size + 16,
+        pointerEvents: disabled ? 'none' : 'auto',
       }}
     >
       {icon}

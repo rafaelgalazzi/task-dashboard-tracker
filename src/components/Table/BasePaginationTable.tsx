@@ -53,26 +53,10 @@ export function BasePaginationTable<T>({
           </div>
         ))}
 
-        <div className="flex justify-between items-center ">
-          <button
-            className="px-3 py-1 border rounded disabled:opacity-50"
-            disabled={page === 1}
-            onClick={() => onPageChange(page - 1)}
-          >
-            Prev
-          </button>
-
-          <span>
-            Page {page} de {totalPages}
-          </span>
-
-          <button
-            className="px-3 py-1 border rounded disabled:opacity-50"
-            disabled={page === totalPages}
-            onClick={() => onPageChange(page + 1)}
-          >
-            NexT
-          </button>
+        <div className="flex justify-center p-2">
+          <div className="max-w-[400px]">
+            <BasePagination currentPage={page} totalPages={totalPages} onPageChange={handlePageChange} />
+          </div>
         </div>
       </div>
     );
@@ -97,7 +81,11 @@ export function BasePaginationTable<T>({
           </div>
         ))}
 
-        <BasePagination currentPage={page} totalPages={totalPages} onPageChange={handlePageChange} />
+        <div className="flex justify-end p-2">
+          <div className="max-w-[400px]">
+            <BasePagination currentPage={page} totalPages={totalPages} onPageChange={handlePageChange} />
+          </div>
+        </div>
       </div>
     );
   }

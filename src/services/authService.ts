@@ -8,7 +8,7 @@ import type {
   GetSessionResponse,
   ConfirmEmailForm,
   ResendConfirmEmailForm,
-} from '../types/authService';
+} from '../types/Auth';
 
 export async function login(form: LoginForm): Promise<LoginResponse> {
   const { data } = await api.post('/login', form);

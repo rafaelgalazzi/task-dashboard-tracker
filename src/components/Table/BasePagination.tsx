@@ -1,75 +1,92 @@
-import type { ReactElement } from 'react';
 import { IconButton } from '../Button/IconButton';
 
 interface BasePaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
-  maxPageButtons?: number;
+  maxPageButtons?: number; // número máximo incluindo os ...
 }
 
-export function BasePagination(props: BasePaginationProps) {
-  const { currentPage, totalPages, maxPageButtons } = props;
-  function formatPageNumberIconsToShow(currentPage: number, totalPages: number, maxPageButtons: number = 5) {
-    const elements: ReactElement[] = [];
-
-    // const batata = '< 1 .. current ..  last >';
-
+export function BasePagination({ currentPage, totalPages, onPageChange, maxPageButtons = 5 }: BasePaginationProps) {
+  function getPagesWithEllipsis(): (number | string)[] {
     if (totalPages <= maxPageButtons) {
-      for (let i = 0; i < totalPages; i++) {
-        if (i + 1 === currentPage) {
-          elements.push(
-            <div
-              className={`inline-flex items-center justify-center rounded-full bg-button text-button-foreground hover:opacity-70 transition-colors duration-300`}
-              style={{
-                backgroundColor: `var(--secondary)`,
-                width: 20 + 16,
-                height: 20 + 16,
-              }}
-            >
-              {i + 1}
-            </div>
-          );
-          continue;
-        }
-
-        elements.push(
-          <div
-            className={`inline-flex items-center justify-center rounded-full bg-button text-button-foreground hover:opacity-70 transition-colors duration-300`}
-            style={{
-              backgroundColor: `var(--text-accent)`,
-              width: 20 + 16,
-              height: 20 + 16,
-            }}
-          >
-            {i + 1}
-          </div>
-        );
-      }
-
-      return elements;
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
 
+    const pages: (number | string)[] = [];
+    const firstPage = 1;
+    const lastPage = totalPages;
 
+    const slots = maxPageButtons - 2; // sobra para o meio
+    const sidePages = slots - 2; // páginas reais quando houver "..."
 
-    // for(let i = 0; i < maxPageButtons; i++) {
-    //     if (i + 1 < )
-    // }
+    pages.push(firstPage);
 
+    if (currentPage <= sidePages) {
+      // início → mostra páginas e "..." no fim
+      for (let i = 2; i <= slots; i++) {
+        pages.push(i);
+      }
+      pages.push('...');
+    } else if (currentPage >= totalPages - sidePages + 1) {
+      // fim → "..." no início e páginas no fim
+      pages.push('...');
+      for (let i = totalPages - slots + 1; i < totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // meio → "..." dos dois lados
+      pages.push('...');
+      const half = Math.floor(sidePages / 2);
+      const start = currentPage - half;
+      const end = currentPage + half;
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+      pages.push('...');
+    }
 
+    pages.push(lastPage);
 
-
-    return elements;
+    return pages.slice(0, maxPageButtons);
   }
 
-  const pagesToShow = formatPageNumberIconsToShow(currentPage, totalPages, maxPageButtons);
+  const pages = getPagesWithEllipsis();
 
   return (
-    <div className="flex items-center justify-between p-4">
-      <IconButton name="chevron-left" circle />
-      {pagesToShow}
+    <div className="flex items-center justify-center gap-2">
+      <IconButton
+        name="chevron-left"
+        circle
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 1)}
+      />
 
-      <IconButton name="chevron-right" circle />
+      {pages.map((page, idx) =>
+        page === '...' ? (
+          <span key={`ellipsis-${idx}`} className="px-2 text-gray-500">
+            ...
+          </span>
+        ) : (
+          <button
+            key={page}
+            onClick={() => onPageChange(Number(page))}
+            className={`cursor-pointer inline-flex items-center justify-center rounded-full transition-colors duration-300 w-[36px] h-[36px] text-sm font-medium
+              ${page === currentPage ? 'bg-secondary text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}
+            `}
+            aria-current={page === currentPage ? 'page' : undefined}
+          >
+            {page}
+          </button>
+        )
+      )}
+
+      <IconButton
+        name="chevron-right"
+        circle
+        disabled={currentPage === totalPages}
+        onClick={() => onPageChange(currentPage + 1)}
+      />
     </div>
   );
 }

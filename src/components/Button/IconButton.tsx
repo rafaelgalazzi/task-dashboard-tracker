@@ -10,6 +10,7 @@ interface IconButtonProps {
   circle?: boolean;
   bgColor?: string;
   fill?: string;
+  disabled?: boolean;
 }
 
 export function IconButton(props: IconButtonProps) {
