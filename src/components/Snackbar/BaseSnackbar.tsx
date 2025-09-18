@@ -12,7 +12,7 @@ interface BaseSnackbarProps {
   message: string;
   type?: SnackbarType;
   onClose: () => void;
-  autoHideDuration?: number; // ms, e.g. 3000
+  timeout?: number; // ms, e.g. 3000
   position?: SnackbarPosition;
 }
 
@@ -28,14 +28,14 @@ export function BaseSnackbar({
   message,
   type = 'success',
   onClose,
-  autoHideDuration = 3000,
+  timeout = 3000,
   position = 'top-center',
 }: BaseSnackbarProps) {
   useEffect(() => {
     if (!open) return;
-    const id = setTimeout(onClose, autoHideDuration);
+    const id = setTimeout(() => onClose(), timeout);
     return () => clearTimeout(id);
-  }, [open, autoHideDuration, onClose]);
+  }, [open, timeout, onClose]);
 
   if (typeof document === 'undefined') return null;
   if (!open) return null;
@@ -46,7 +46,7 @@ export function BaseSnackbar({
       aria-live={type === 'error' ? 'assertive' : 'polite'}
       className={`fixed z-50 ${posClass[position]} transition-opacity duration-300`}
     >
-      <BaseCard className='min-w-[300px]'>
+      <BaseCard className="min-w-[300px]">
         <div className="flex items-center justify-between gap-4">
           <BaseText>{message}</BaseText>
           <button

@@ -22,9 +22,8 @@ export function ConfirmAccount() {
   const navigate = useNavigate();
   const { confirmEmail, confirmEmailError } = useConfirmEmail();
   const { resendEmail } = useResendEmail();
-  const { showSnackbar } = useSnackbar();
   const [searchParams] = useSearchParams();
-
+  const { showSnackbar } = useSnackbar();
   const token = searchParams.get('token');
 
   const {
@@ -46,11 +45,11 @@ export function ConfirmAccount() {
       { email },
       {
         onSuccess: () => {
-          showSnackbar({ message: 'A confirmation email has been sent to your email.', type: 'success' });
+          showSnackbar({ message: 'A confirmation email has been sent to your email.', timeout: 3000 });
         },
         onError: (error) => {
           console.log(error);
-          showSnackbar({ message: 'Something went wrong', type: 'error' });
+          showSnackbar({ message: 'Something went wrong', timeout: 3000 });
         },
       }
     );
