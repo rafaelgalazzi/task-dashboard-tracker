@@ -24,7 +24,6 @@ export function SnackbarHandler() {
 
   const snackbarState = useSelector((state: RootState) => state.snackbar);
 
-  // Adiciona à fila sempre que isToShow muda
   useEffect(() => {
     if (snackbarState.isToShow) {
       setQueue((q) => [
@@ -40,7 +39,6 @@ export function SnackbarHandler() {
     }
   }, [snackbarState]);
 
-  // Mostrar o próximo snackbar quando o atual fecha
   useEffect(() => {
     if (!current && queue.length > 0) {
       const next = queue[0];

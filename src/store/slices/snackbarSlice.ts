@@ -4,9 +4,9 @@ import type { ShowSnackbarArgs } from '../../components/Snackbar/SnackbarHandler
 const initialState: { isToShow: boolean } & ShowSnackbarArgs = {
   isToShow: false,
   message: '',
-  type: 'success', // Agora TS sabe que é do tipo SnackbarType
+  type: 'success',
   timeout: 3000,
-  position: 'top-center', // Agora TS sabe que é do tipo SnackbarPosition
+  position: 'top-center',
 };
 
 const snackbarSlice = createSlice({
