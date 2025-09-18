@@ -10,12 +10,12 @@ export function useLogin() {
     login: mutate,
     isPending,
     error,
-    isSuccess
+    isSuccess,
   };
 }
 
 export function useCreateAccount() {
-  const { mutate, isPending, error, isSuccess} = useMutation({
+  const { mutate, isPending, error, isSuccess } = useMutation({
     mutationFn: accountCreate,
   });
 
@@ -23,7 +23,7 @@ export function useCreateAccount() {
     createAccount: mutate,
     isPending,
     error,
-    isSuccess
+    isSuccess,
   };
 }
 
