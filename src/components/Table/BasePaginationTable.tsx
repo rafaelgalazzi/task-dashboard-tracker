@@ -4,7 +4,7 @@ import { useScreen } from '../../hooks/ui/useScreen';
 import { BasePagination } from './BasePagination';
 
 interface BasePaginationTableProps<T> {
-  columns: (keyof T)[];
+  columns: { name: keyof T }[];
   items: T[];
   page: number; // página atual
   pageSize: number; // itens por página
@@ -47,7 +47,7 @@ export function BasePaginationTable<T>({
           <div key={`row-${rowIdx}`} className="flex text-center border-b last:border-b-0">
             {columns.map((column, colIdx) => (
               <div key={colIdx} className="flex-1 p-2 border-r last:border-r-0">
-                {String(item[column])}
+                {String(item[column.name])}
               </div>
             ))}
           </div>
@@ -75,7 +75,7 @@ export function BasePaginationTable<T>({
           <div key={`row-${rowIdx}`} className="flex text-center border-b last:border-b-0">
             {columns.map((column, colIdx) => (
               <div key={colIdx} className="flex-1 p-2 border-r last:border-r-0">
-                {String(item[column])}
+                {String(item[column.name])}
               </div>
             ))}
           </div>
