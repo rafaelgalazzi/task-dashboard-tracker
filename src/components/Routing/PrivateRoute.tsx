@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useSession } from '../../hooks/useAuth';
 import { LoadingSpinner } from '../Spinner/LoadingSpinner';
 import { PrivateNavbar } from '../Navbar/PrivateNavbar';
 import { PrivateFooter } from '../Footer/PrivateFooter';
 import { SidePanel } from '../SidePanel/SidePanel';
 import { useState } from 'react';
-import { useScreen } from '../../hooks/useScreen';
+import { useScreen } from '../../hooks/ui/useScreen';
+import { useSession } from '../../hooks/auth/useSession';
 
 export function PrivateRoute() {
   const { session, isLoading, error } = useSession();

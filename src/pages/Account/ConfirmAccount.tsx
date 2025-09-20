@@ -2,7 +2,6 @@ import BaseCard from '../../components/Layout/BaseCard';
 import { BaseLink } from '../../components/Text/BaseLink';
 import BaseText from '../../components/Text/BaseText';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { useConfirmEmail, useResendEmail } from '../../hooks/useAuth';
 import { useEffect } from 'react';
 import { BaseInput } from '../../components/Form/BaseInput';
 import { BaseForm } from '../../components/Form/BaseForm';
@@ -10,7 +9,9 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import BaseButton from '../../components/Button/BaseButton';
-import { useSnackbar } from '../../hooks/useSnackbar';
+import { useSnackbar } from '../../hooks/ui/useSnackbar';
+import { useResendEmail } from '../../hooks/auth/useResendEmail';
+import { useConfirmEmail } from '../../hooks/auth/useConfirmEmail';
 
 const schema = z.object({
   email: z.string().email('Invalid email address.'),

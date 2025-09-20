@@ -1,16 +1,16 @@
 import BaseCard from '../../components/Layout/BaseCard';
 import { BasePaginationTable } from '../../components/Table/BasePaginationTable';
 import BaseText from '../../components/Text/BaseText';
-import type { User } from '../../types/User';
+import type { Projects } from '../../types/Projects';
 
 export function ProjectList() {
   function changePageHandler() {
     return;
   }
 
-  const items: User[] = [];
+  const items: Projects[] = [];
 
-  const columns: (keyof User)[] = [];
+  const columns: (keyof Projects)[] = [];
 
   return (
     <div>

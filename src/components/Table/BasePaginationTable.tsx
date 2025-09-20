@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 import BaseText from '../Text/BaseText';
-import { useScreen } from '../../hooks/useScreen';
+import { useScreen } from '../../hooks/ui/useScreen';
 import { BasePagination } from './BasePagination';
 
 interface BasePaginationTableProps<T> {

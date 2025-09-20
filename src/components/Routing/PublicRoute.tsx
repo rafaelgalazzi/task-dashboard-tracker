@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { useSession } from '../../hooks/useAuth';
 import { LoadingSpinner } from '../Spinner/LoadingSpinner';
+import { useSession } from '../../hooks/auth/useSession';
 import bg1 from '../../assets/backgrounds/bg1.jpg';
 import bg2 from '../../assets/backgrounds/bg2.jpg';
 import bg3 from '../../assets/backgrounds/bg3.jpg';

@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { BaseForm } from '../../components/Form/BaseForm';
-import { useLogin } from '../../hooks/useAuth';
+import { useLogin } from '../../hooks/auth/useLogin';
 import { BaseLink } from '../../components/Text/BaseLink';
 
 const schema = z.object({

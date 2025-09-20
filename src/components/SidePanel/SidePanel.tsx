@@ -2,9 +2,9 @@ import type { IconName } from 'lucide-react/dynamic';
 import BaseIcon from '../Icons/BaseIcons';
 import BaseText from '../Text/BaseText';
 import { useNavigate } from 'react-router-dom';
-import { useLogout } from '../../hooks/useAuth';
-import { useScreen } from '../../hooks/useScreen';
+import { useScreen } from '../../hooks/ui/useScreen';
 import { BaseDropdown } from '../DropDown/BaseDropDown';
+import { useLogout } from '../../hooks/auth/useLogout';
 
 interface SidePanelProps {
   className?: string;

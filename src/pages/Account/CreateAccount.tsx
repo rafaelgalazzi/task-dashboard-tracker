@@ -7,9 +7,9 @@ import BaseCard from '../../components/Layout/BaseCard';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useCreateAccount } from '../../hooks/useAuth';
-import { useSnackbar } from '../../hooks/useSnackbar';
+import { useSnackbar } from '../../hooks/ui/useSnackbar';
 import { BaseLink } from '../../components/Text/BaseLink';
+import { useCreateAccount } from '../../hooks/auth/useCreateAccount';
 
 const schema = z.object({
   firstName: z.string().min(1, 'First name is required.'),
