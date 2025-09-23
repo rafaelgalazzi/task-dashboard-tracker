@@ -6,7 +6,7 @@ export function TaskList() {
   //   const navigate = useNavigate();
 
   return (
-    <BaseCard showRibbon>
+    <BaseCard>
       <BaseText className="text-2xl font-bold">Task List</BaseText>
     </BaseCard>
   );

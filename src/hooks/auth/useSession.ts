@@ -4,7 +4,7 @@ import { getSession } from '../../services/authService';
 export function useSession() {
   const qc = useQueryClient();
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['session'],
     queryFn: async () => {
       const res = await getSession();
@@ -23,6 +23,7 @@ export function useSession() {
   });
 
   return {
+    refetch,
     session: data,
     isLoading,
     error,

@@ -12,6 +12,9 @@ import { ProjectList } from './pages/Project/ProjectList';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { SnackbarHandler } from './components/Snackbar/SnackbarHandler';
+import { TaskList } from './pages/Tasks/TaskList';
+import { ProfilePage } from './pages/Profile/ProfilePage';
+import { SettingsPage } from './pages/Settings/SettingsPage';
 
 const queryClient = new QueryClient();
 
@@ -30,6 +33,9 @@ function App() {
 
             <Route element={<PrivateRoute />}>
               <Route path="/projects" element={<ProjectList />} />
+              <Route path="/tasks" element={<TaskList />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/settings" element={<SettingsPage />} />
             </Route>
             <Route path="*" element={<NotFoundRoute />} />
           </Routes>
