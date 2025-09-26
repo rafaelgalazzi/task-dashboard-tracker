@@ -19,6 +19,7 @@ export function useSession() {
     },
     retry: false,
     refetchOnWindowFocus: false,
+    retryOnMount: false,
     staleTime: 1000 * 60 * 5,
   });
 
