@@ -14,7 +14,7 @@ export function ProjectCreate() {
   const { createProject, createProjectIsPending, creasteProjectError } = useCreateProject();
   const { showSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const handleCreateProject = async () => {
+  const handleCreateProject = () => {
     createProject(form, {
       onSuccess: () => {
         showSnackbar({ message: 'Project created!', type: 'success' });
