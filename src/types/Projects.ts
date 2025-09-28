@@ -6,3 +6,9 @@ export interface Projects {
   updatedAt: Date;
   deletedAt: Date | null;
 }
+
+
+export interface CreateProjectForm {
+  name: string;
+  description: string;
+}

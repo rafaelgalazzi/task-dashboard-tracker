@@ -10,6 +10,7 @@ interface BasePaginationTableProps<T> {
   pageSize: number; // itens por página
   total: number; // total de itens
   onPageChange: (page: number) => void; // callback para mudar página
+  noItemsText?: string
 }
 
 export function BasePaginationTable<T>({
@@ -19,6 +20,7 @@ export function BasePaginationTable<T>({
   pageSize,
   total,
   onPageChange,
+  noItemsText = 'No Items'
 }: BasePaginationTableProps<T>) {
   const { isMobile } = useScreen();
 
@@ -26,7 +28,7 @@ export function BasePaginationTable<T>({
     onPageChange(page);
   }
 
-  if (!items.length) return <BaseText>No items</BaseText>;
+  if (!items.length) return <BaseText>{noItemsText}</BaseText>;
 
   const totalPages = Math.ceil(total / pageSize);
 
