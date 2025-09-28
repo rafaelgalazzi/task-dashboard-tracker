@@ -31,10 +31,14 @@ export function ProjectCreate() {
     setForm(form);
   };
 
+  const handleCancelAndGoBack = () => {
+    navigate('/projects');
+  };
+
   return (
     <div>
       <div className="flex justify-center">
-        <BaseCard className="w-full md:w-1/2">
+        <BaseCard className="w-full">
           <BaseText className="text-2xl font-bold mb-4">Create a project</BaseText>
           <BaseForm>
             <BaseInput
@@ -49,8 +53,11 @@ export function ProjectCreate() {
             />
           </BaseForm>
           <div className="flex justify-center">
-            <BaseButton onClick={handleCreateProject} loading={createProjectIsPending}>
+            <BaseButton className="mx-2" onClick={handleCreateProject} loading={createProjectIsPending}>
               Crete Project
+            </BaseButton>
+            <BaseButton className="mx-2" onClick={handleCancelAndGoBack} loading={createProjectIsPending}>
+              Cancel
             </BaseButton>
           </div>
         </BaseCard>
