@@ -4,7 +4,7 @@ import { BaseForm } from '../../components/Form/BaseForm';
 import { BaseInput } from '../../components/Form/BaseInput';
 import BaseCard from '../../components/Layout/BaseCard';
 import BaseText from '../../components/Text/BaseText';
-import { useCreateProject } from '../../hooks/projects/UseCreateProject';
+import { useCreateProject } from '../../hooks/projects/useCreateProject';
 import type { CreateProjectForm } from '../../types/Projects';
 import { useSnackbar } from '../../hooks/ui/useSnackbar';
 import { useNavigate } from 'react-router-dom';
